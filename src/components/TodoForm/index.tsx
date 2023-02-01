@@ -26,8 +26,7 @@ export function TodoForm() {
         
         <input
           required
-          name="comment"
-          placeholder="Deixe um comentário"
+          placeholder="Adicione uma nova tarefa"
           type="text"
           value={newCommentText}
           onChange={handleNewCommentChanged}
@@ -35,7 +34,7 @@ export function TodoForm() {
         />
         
         <button type="submit" disabled={isNewCommentEmpty}>
-          Comentar
+          Criar
         </button>
       
       </form>

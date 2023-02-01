@@ -9,12 +9,13 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  
+  gap: 10px;
+  margin-top: -30px;
 }
 
 .commentForm > input{
   width: 100%;
-  background: var(--gray-300);
+  background: #262626;
   border: 0;
   resize: none;
   height: 54px;
@@ -22,6 +23,7 @@
   border-radius: 8px;
   color: var(--white);
   line-height: 1.4;
+  border: 1px solid var(--gray-700);
 }
 
 
