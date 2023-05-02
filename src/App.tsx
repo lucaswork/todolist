@@ -1,15 +1,9 @@
 import { Header } from "components/Header";
 import {TodoForm} from "components/TodoForm"
 import  Todo  from 'components/Todo'
-
-
-
-import styles from "./App.module.css";
 import "./global.css";
 import { useState } from "react";
 import { ITodoListProps } from "types/TodoList";
-
-
 
 
 export function App() {
@@ -32,19 +26,10 @@ export function App() {
   return (
     <>
       <Header />
-      <div className={styles.wrapper}>
+      <section className="task-list container">
         <TodoForm handleSubmit={handleSubmit}/>
         <main>  
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
-            <div>
-              <strong>Tarefas criadas</strong> <span>{todoList.length}</span>
-            </div>
-            <div>
-              <strong>Concluídas</strong> <span>{`${todoList.filter(t => t.isComplete).length} de ${todoList.length}`}</span>
-            </div>
-          </div>
-
-          <div style={{marginTop:10}}>
+          <ul>
             {todoList?.map((todo, index) => {
               return (
                 <Todo
@@ -55,9 +40,9 @@ export function App() {
                 />
               );
             })}
-          </div>
+          </ul>
         </main>
-      </div>
+      </section>
     </>
   );
 }
