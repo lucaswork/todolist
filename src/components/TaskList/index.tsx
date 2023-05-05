@@ -15,16 +15,16 @@ export const TaskList: React.FC = () => {
   function handleCreateNewTask(e: FormEvent<HTMLFormElement>) {
     e.preventDefault(); 
     const newTask = {isComplete: false, title: newTaskTitle, id: new Date().getTime()}
-    setTasks(state => [...state, newTask])
+    setTasks(oldState => [...oldState, newTask])
     setNewTaskTitle('')
   }
 
   function handleToggleTaskCompletion(id: number) {
-    setTasks(task => task.map(t => t.id === id ? {...t, isComplete: true} : t ))
+    setTasks(oldState => oldState.map(t => t.id === id ? {...t, isComplete: !t.isComplete} : t ))
   }
 
   function handleRemoveTask(id: number) {
-    setTasks(task => task.filter(t => t.id !== id))
+    setTasks(oldState => oldState.filter(t => t.id !== id))
   }
 
 
@@ -51,7 +51,7 @@ export const TaskList: React.FC = () => {
               onChange={handleTitleChanged}
               onInvalid={handleTitleInvalid}
             />
-            <button type="submit" disabled={newTaskTitle.length === 0}>
+            <button type="submit" disabled={newTaskTitle.length === 0} data-testid="add-task-button">
               <FiCheckSquare size={16} color="#fff"/>
             </button>
           </div>
@@ -62,7 +62,7 @@ export const TaskList: React.FC = () => {
         <ul>
           {tasks.map(task => (
             <li key={task.id}>
-              <div className={task.isComplete ? 'completed' : ''}>
+              <div className={task.isComplete ? 'completed' : ''} data-testid="task">
                 <label className="checkbox-container">
                   <input 
                     type="checkbox"
@@ -75,7 +75,7 @@ export const TaskList: React.FC = () => {
                 <p>{task.title}</p>
               </div>
 
-              <button type="button" onClick={() => handleRemoveTask(task.id)}>
+              <button type="button" onClick={() => handleRemoveTask(task.id)}  data-testid="remove-task-button">
                 <FiTrash size={16}/>
               </button>
             </li>
