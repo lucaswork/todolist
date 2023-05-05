@@ -1,11 +1,13 @@
-import igniteLogo from "assets/Logo.svg";
+import React from 'react';
+import '../../styles/header.scss'
 
-export function Header() {
+export const Header: React.FC = () => {
   return (
     <header className="header">
       <div>
-        <img src={igniteLogo} alt="logotipo todolist" />
+        <img src="/logo.svg" alt="to.do"/>
       </div>
     </header>
-  );
+  )
 }
+
